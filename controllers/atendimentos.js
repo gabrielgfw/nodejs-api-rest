@@ -1,3 +1,5 @@
+const Atendimento = require('../models/atendimentos');
+
 module.exports = app => {
 
   app.get('/atendimentos', (req, res) => {
@@ -5,7 +7,8 @@ module.exports = app => {
   });
 
   app.post('/atendimentos', (req, res) => {
-    const result = req.body;
-    res.send(`A mensagem foi: ${result.message}`);
+    const atendimento = req.body;
+    Atendimento.adiciona(atendimento);
+    res.send('Atendimento cadastrado com sucesso!');
   });
 }
